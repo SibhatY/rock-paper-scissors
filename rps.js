@@ -13,4 +13,32 @@ function getComputerChoice() {
 
 }
 
-console.log(getComputerChoice())
+
+function getHumanChoice() {
+
+    let userChoice;
+
+    while (userChoice !== 'r' && userChoice !== 'p' && userChoice !== 's') {
+
+        userChoice = (prompt("Enter 'r' for Rock, 'p' for Paper or 's' for Scissors"));
+
+    }
+    
+
+    switch (userChoice) {
+        case "r":
+            return "Rock";
+        case "p":
+            return "Paper";
+        case "s":
+            return "Scissors";
+    }
+
+
+}
+
+
+
+
+console.log(getComputerChoice());
+console.log(getHumanChoice());
