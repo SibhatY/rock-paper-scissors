@@ -76,7 +76,6 @@ function playRound(computerChoice, humanChoice) {
 function updateDOM(message) {
 
     const score = document.querySelector("#score");
-    const status = document.querySelector("#game");
     const roundInfo = document.querySelector("#roundInfo");
 
     score.textContent = `Your Score: ${humanScore} | Computer Score: ${computerScore}`;
@@ -103,13 +102,26 @@ function updateGame() {
             console.log("AWW, YOU LOST THE GAME!");
             status.textContent = "GAME OVER! YOU LOSE!";
         }
-        //Game end logic here to stop game or reset
+        disableGame();
+
     }
     else {
         status.textContent = `Choose your move!`;
     }
 }
 
+
+function disableGame() {
+
+    const buttons = document.querySelectorAll("#rockButton, #paperButton, #scissorButton");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+    document.querySelector("#replayButton").style.display = `block`;
+
+    
+}
 
 
 
