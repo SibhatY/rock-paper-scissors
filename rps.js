@@ -118,9 +118,33 @@ function disableGame() {
     buttons.forEach(button => {
         button.disabled = true;
     });
+
     document.querySelector("#replayButton").style.display = `block`;
 
+    document.querySelector("#replayButton").onclick = resetGame;
+
+
     
+}
+
+
+function resetGame () {
+
+    computerScore = 0;
+    humanScore = 0;
+    rounds = 0;
+
+    const buttons = document.querySelectorAll("#rockButton, #paperButton, #scissorButton");
+
+    buttons.forEach(button => {
+        button.disabled = false;
+    });
+
+    document.querySelector("#score").textContent = "Your Score: 0 | Computer Score: 0";
+    document.querySelector("#roundInfo").textContent = "";
+    document.querySelector("#status").textContent = "Welcome to Rock-Paper-Scissors, Choose your move!";
+    document.querySelector("#replayButton").style.display = 'none';
+
 }
 
 
