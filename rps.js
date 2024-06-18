@@ -1,6 +1,7 @@
 
 let computerScore = 0;
 let humanScore = 0;
+let rounds = 0;
 
 function getComputerChoice() {
 
@@ -18,33 +19,16 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-
-    let userChoice;
-
-    while (userChoice !== 'r' && userChoice !== 'p' && userChoice !== 's') {
-
-        userChoice = (prompt("Enter 'r' for Rock, 'p' for Paper or 's' for Scissors"));
-
-    }
-
-
-    switch (userChoice) {
-        case "r":
-            return "Rock";
-        case "p":
-            return "Paper";
-        case "s":
-            return "Scissors";
-    }
-
-
-}
 
 
 
 
 function playRound(computerChoice, humanChoice) {
+
+    console.log(`Round ${rounds + 1}:`);
+    console.log(`Computer chose ${computerChoice}`);
+    console.log(`You chose ${humanChoice}`);
+
 
 
     if ((humanChoice === "Rock" && computerChoice === "Paper") || (humanChoice === "Paper" && computerChoice === "Scissors") || (humanChoice === "Scissors" && computerChoice === "Rock")) {
@@ -74,36 +58,62 @@ function playRound(computerChoice, humanChoice) {
 
 
 
-function playGame() {
-
-    computerScore = 0;
-    humanScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-
-        console.log(`Round ${i + 1}:`);
-
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(computerSelection, humanSelection);
-        console.log("\n");
-
-    }
-
-    if (humanScore > computerScore) {
-        console.log("YOU WIN THE GAME!!!");
-    }
-    else if (humanScore < computerScore) {
-        console.log("AWW, YOU LOST THE GAME!");
-    }
-    else {
-        console.log("TIE GAME!!")
-    }
-
-}
 
 
 
 
-playGame();
+
+
+
+
+
+
+// function playGame() {
+
+//     computerScore = 0;
+//     humanScore = 0;
+
+//     for (let i = 0; i < 5; i++) {
+
+//         console.log(`Round ${i + 1}:`);
+
+//         const humanSelection = getHumanChoice();
+//         const computerSelection = getComputerChoice();
+
+//         playRound(computerSelection, humanSelection);
+//         console.log("\n");
+
+//     }
+
+//     if (humanScore > computerScore) {
+//         console.log("YOU WIN THE GAME!!!");
+//     }
+//     else if (humanScore < computerScore) {
+//         console.log("AWW, YOU LOST THE GAME!");
+//     }
+//     else {
+//         console.log("TIE GAME!!")
+//     }
+
+// }
+
+
+const rockButton = document.querySelector("#rockButton");
+rockButton.addEventListener("click", () => {
+    playRound(getComputerChoice(), "Rock");
+});
+
+const paperButton = document.querySelector("#paperButton");
+paperButton.addEventListener("click", () => {
+    playRound(getComputerChoice(), "Paper");
+});
+
+const scissorButton = document.querySelector("#scissorButton");
+scissorButton.addEventListener("click", () => {
+    playRound(getComputerChoice(), "Scissors");
+});
+
+
+
+
+
